@@ -44,6 +44,7 @@ const copilot = ({
   verticalOffset = 0,
   wrapperStyle,
   arrowColor,
+  stepBufferTime
 } = {}) =>
   (WrappedComponent) => {
     class Copilot extends Component<any, State> {
@@ -101,7 +102,7 @@ const copilot = ({
           if (move) {
             this.moveToCurrentStep();
           }
-        }, this.state.scrollView ? 100 : 0);
+        }, this.state.scrollView ? 100 : (stepBufferTime || 100));
       }
 
       setVisibility = (visible: boolean): void => new Promise((resolve) => {
